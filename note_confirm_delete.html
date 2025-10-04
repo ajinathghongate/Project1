@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Delete Note{% endblock %}
+{% block content %}
+<h2 class="mb-3">Delete Note</h2>
+<div class="alert alert-warning">
+    <i class="fas fa-exclamation-triangle me-2"></i>
+    Are you sure you want to delete <strong>{{ note.title }}</strong>? This action cannot be undone.
+</div>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger"><i class="fas fa-trash me-1"></i>Delete</button>
+    <a href="{% url 'note_detail' note.pk %}" class="btn btn-outline-secondary">Cancel</a>
+</form>
+{% endblock %}
